@@ -1,26 +1,39 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AppRoutingModule } from './app-routing.module';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { FrutaComponent } from './fruta/fruta.component';
 import { EmpleadoComponent } from './empleado/empleado.component';
-import { FormsModule } from '@angular/forms';
+import { HomeComponent } from './home/home.component';
+import { ContactoComponent } from './contacto/contacto.component';
+import { CochesComponent } from './coches/coches.component';
+
+import { routing, appRoutingProviders } from './app.routing';
+
+import { ConversorPipe } from './pipes/conversor.pipe';
+
 
 @NgModule({
-  // Crear nuevas directivas, pipes, componentes
+  // Cargar nuevas directivas, pipes, componentes
   declarations: [
     AppComponent,
     FrutaComponent,
     EmpleadoComponent,
+    HomeComponent,
+    ContactoComponent,
+    ConversorPipe,
+    CochesComponent
   ],
   // Cargar módulos, servicios
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    FormsModule
+    FormsModule,
+    routing
   ],
-  providers: [],
+  providers: [
+    appRoutingProviders
+  ],
   // Carga el componente principal con el que la aplicación iniciará
   bootstrap: [AppComponent]
 })

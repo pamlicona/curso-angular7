@@ -1,0 +1,35 @@
+<h2>{{titulo}}</h2>
+
+<form #formCoche="ngForm">
+    <div>
+        <label>Nombre:</label>
+        <input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="coche.nombre" required>
+        <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+            <span *ngIf="nombre.errors.required">
+                El nombre es requerido
+            </span>
+        </div>
+    </div>
+
+    <p>
+        <label>Caballaje:</label>
+        <input 
+            type="text" 
+            name="caballaje" 
+            #caballaje="ngModel" 
+            [(ngModel)]="coche.caballaje" 
+            required
+            pattern="[0-9]+"
+        >
+        <span *ngIf="caballaje.touched && !caballaje.valid">
+            El caballaje debe ser numérico
+        </span>
+    </p>
+
+    <p>
+        <label>Color:</label>
+        <input type="text" name="color" color="ngModel" [(ngModel)]="coche.color" required>
+    </p>
+
+    <button (click)="onSubmit()">Guardar</button>
+</form>
